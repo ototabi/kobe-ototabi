@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- 💡 Macでも絶対にバグが起きない安定版（net9.0）に変更しました！ -->
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>kobe_ototabi</RootNamespace>
+  </PropertyGroup>
+
+</Project>
