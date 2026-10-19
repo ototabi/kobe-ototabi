@@ -1,11 +1,12 @@
-FROM ://microsoft.com AS build
-WORKDIR /src
-COPY ["kobe-ototabi.csproj", "."]
-RUN dotnet restore "kobe-ototabi.csproj"
-COPY . .
-RUN dotnet publish "kobe-ototabi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+# 💡 パズルみたいに英語をバラバラにして繋ぎ合わせる魔法のコードです
+ARG REGISTRY=mcr.microsoft.com
 
-FROM ://microsoft.com AS final
+FROM ${REGISTRY}/dotnet/sdk:9.0 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet publish -c Release -o /app/publish
+
+FROM ${REGISTRY}/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "kobe-ototabi.dll"]
