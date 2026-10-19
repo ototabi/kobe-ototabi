@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="ja" style="position: relative; min-height: 100%;">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - 音で旅する停留所</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+    <style>
+        /* 1. 共通の幅制限を一度完全にリセット（スライダーやバナー画像用） */
+        .container, main, div.container {
+            max-width: 100% !important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+            margin: 0px !important;
+        }
+
+        /* 🌟 2. 修正：プライバシーポリシー（/Privacy）のとき【だけ】、左右に綺麗な空白を持たせる設定 */
+        @if (ViewContext.RouteData.Values["page"]?.ToString().Contains("Privacy") ?? false)
+        {
+            <text>
+            main {
+                max-width: 800px !important;
+                width: 90% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                padding-top: 40px !important; /* 被らないように上の余白を確保 */
+            }
+            </text>
+        }
+
+        body {
+            /* フッターが下に潜り込めるように、フッターの高さ分の余白（150px）を下に確保します */
+            margin-bottom: 150px !important; 
+            padding-bottom: 0px !important;
+        }
+
+        /* 3. フッターを画面の最下部に完全に固定し、被りと底の余白を完全消滅させます */
+        .footer {
+            position: absolute !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            height: 120px !important; /* フッターの高さを固定 */
+            margin: 0px !important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+
+        /* 4. メニューバーを写真の上に浮かせる共通設定 */
+        nav.navbar {
+            position: absolute !important;
+            z-index: 99999 !important; 
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        @* 🌟 5. C#の条件分岐：ホーム（Index）とプライバシー（Privacy）のとき【以外】だけメニューバーを出す *@
+        @if (!(ViewContext.RouteData.Values["page"]?.ToString().Contains("Index") ?? false) && 
+             !(ViewContext.RouteData.Values["page"]?.ToString().Contains("Privacy") ?? false))
+        {
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light p-3">
+                <div class="container-fluid" style="padding-left: 24px; padding-right: 24px;">
+                    <a class="navbar-brand text-white font-weight-bold" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.8); font-size: 1.25rem;" asp-page="/Index">音で旅する停留所</a>
+                    <div class="d-sm-inline-flex justify-content-end">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white font-weight-bold px-3" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.8);" asp-page="/Train">車内放送</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white font-weight-bold px-3" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.8);" asp-page="/Station">駅放送</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        }
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <!-- 共通フッター -->
+    <footer class="border-top footer text-muted text-center py-4" style="background-color: #f8f9fa; font-size: 1.05rem; letter-spacing: 1px;">
+        <div class="container">
+            <div class="mb-2">
+                <a asp-page="/Privacy" style="color: #007bff !important; text-decoration: underline !important; font-size: 0.95rem; font-weight: 500;">
+                    プライバシーポリシー
+                </a>
+            </div>
+            &copy; 2026 - 音で旅する停留所
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

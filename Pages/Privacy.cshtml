@@ -1,0 +1,38 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "プライバシーポリシー";
+}
+
+<div class="container my-5 p-5 bg-white shadow-sm" style="max-width: 800px; border-radius: 15px;">
+    <!-- タイトル見出し（C#の仕組みをそのまま活かしたスマートな書き方です） -->
+    <h1 class="font-weight-bold mb-4 text-dark" style="font-size: 2rem; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
+        @ViewData["Title"]
+    </h1>
+
+    <p class="text-secondary mb-4" style="line-height: 1.8;">
+        「音で旅する停留所」（以下、当サイト）では、利用者の皆様に安心してサイトをご利用いただけるよう、個人情報の取り扱いについて以下の通り定めています。
+    </p>
+
+    <h3 class="h5 font-weight-bold text-dark mt-4 mb-3">1. 個人情報の収集について</h3>
+    <p class="text-muted" style="line-height: 1.7; font-size: 0.95rem;">
+        当サイトでは、通常のページ閲覧において、名前やメールアドレスなどの個人情報を収集することは一切ありません。どなたでも匿名のまま安心して音源をお楽しみいただけます。
+    </p>
+
+    <h3 class="h5 font-weight-bold text-dark mt-4 mb-3">2. 外部コンテンツ（YouTube等）について</h3>
+    <p class="text-muted" style="line-height: 1.7; font-size: 0.95rem;">
+        当サイトでは、YouTubeの動画音源を埋め込んで表示しています。YouTubeによるデータの取り扱いについては、YouTube（Google社）のプライバシーポリシーに準拠します。
+    </p>
+
+    <h3 class="h5 font-weight-bold text-dark mt-4 mb-3">3. 免責事項</h3>
+    <p class="text-muted" style="line-height: 1.7; font-size: 0.95rem;">
+        当サイトに掲載している車内放送などの音源は、個人が趣味の範囲で録音・編集したものです。運行会社公式の案内ではありませんので、内容の正確性については責任を負いかねます。
+    </p>
+
+    <!-- ホームに戻るボタン（C#の正しいルート仕様です） -->
+    <div class="mt-5 text-center">
+        <a href="/Index" class="btn btn-outline-primary px-4" style="border-radius: 20px; font-weight: bold;">
+            ← ホームに戻る
+        </a>
+    </div>
+</div>

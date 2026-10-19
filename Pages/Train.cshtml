@@ -1,0 +1,297 @@
+@page
+@model TrainModel
+@{
+    ViewData["Title"] = "車内放送アーカイブ";
+}
+
+<!-- 👇 Train.cshtml の一番上にある <style> 〜 </style> をこれに丸ごと差し替えます 👇 -->
+<style>
+    /* 外側のコンテナの幅制限と余白を完全にリセットします（ヘッダー画像用） */
+    .container, main, div.container {
+        max-width: 100% !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin: 0px !important;
+    }
+
+
+    /* 🌟 修正：下の文字やカードのエリアだけ、左右に綺麗な余白（24px）を持たせてど真ん中に寄せます！ */
+    .custom-container {
+        max-width: 1300px !important;
+        width: 92% !important;          /* 👈 画面の端っこにパツパツにならないようにします */
+        margin-left: auto !important;   /* 👈 左右を自動にすることで、完全に真ん中寄せになります */
+        margin-right: auto !important;  /* 👈 左右を自動にすることで、完全に真ん中寄せになります */
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        text-align: left !important;
+    }
+
+    /* 【ぷっくり浮かび上がる設定】 */
+    .hover-lift {
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important;
+    }
+    .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* 【スクロール出現の設定（ゆっくり1.3秒）】 */
+    .fade-in-right-delay {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-right-delay.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* 🌟 あなたの見つけた名推理！メニューバーを写真を突き破って最前面に出す魔法です */
+    nav.navbar {
+        position: absolute !important;
+        z-index: 99999 !important; 
+        width: 100%;
+    }
+</style>
+
+<!-- 👇 画像エリア：左右の隙間を無くして画面目一杯に広げました 👇 -->
+<div style="position: relative; width: 100%; height: 320px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
+    <!-- 1層目：神戸市バスの画像（左右目一杯） -->
+    <img src="/images/Kobe08.jpg" alt="車内放送ヘッダー" style="width: 100%; height: 120%; object-fit: cover; display: block;" />
+    <!-- 2層目：薄黒いフィルター -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
+    <!-- 3層目：中央配置の文字エリア -->
+    <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); text-align: left; width: 90%;">
+        <h1 style="color: white; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; font-size: 2.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); margin: 0;">
+            🎧 車内放送アーカイブ
+        </h1>
+        <p style="color: #e0e0e0; font-size: 1rem; margin-top: 10px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); margin-bottom: 0;">
+            主にバスや鉄道の「全区間」車内放送をあつめたページです。
+        </p>
+    </div>
+</div>
+
+<!-- ここから下の「最近のコンテンツ」を囲む箱（真ん中寄せ設定） -->
+<div class="custom-container mt-5 py-4">
+    <!-- 見出しの箱 -->
+    <div class="border-bottom pb-3 mb-4">
+        <h1 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #000000; margin: 0;">
+            最近のコンテンツ
+        </h1>
+    </div>
+    
+    <!-- 放送一覧 -->
+    <div class="row g-4 mb-5">
+        <!-- 音源カード1：神戸市バス -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa;">
+                <div class="card-body p-4">
+                    <span class="badge bg-success mb-2" style="font-size: 0.8rem; border-radius: 10px;">神戸市バス</span>
+                    <h4 class="card-title font-weight-bold" style="font-size: 1.3rem; margin-bottom: 10px;">臨時65系統　神戸駅前→鵯越墓園</h4>
+                    <p class="card-text text-secondary" style="font-size: 0.95rem;">神戸駅からひよどり台までを結ぶ65系統ですが、秋・春の彼岸期間には、鵯越墓園まで直接乗り入れる便が増設されます。全区間車内放送</p>
+                    <div class="mt-3">
+                        <button class="btn btn-primary px-4 shadow-sm" style="border-radius: 20px; font-weight: bold;" onclick="location.href='/VKobeBus#bus65a'">
+                            再生する ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 音源カード2：鉄道 -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa;">
+                <div class="card-body p-4">
+                    <span class="badge bg-primary mb-2" style="font-size: 0.8rem; border-radius: 10px;">鉄道</span>
+                    <h4 class="card-title font-weight-bold" style="font-size: 1.3rem; margin-bottom: 10px;">西鉄太宰府線　二日市→太宰府</h4>
+                    <p class="card-text text-secondary" style="font-size: 0.95rem;">太宰府観光列車旅人は、追加料金なしで乗ることができます。車内放送は四ヶ国語で、旅人の案内放送も用意されています。全区間車内放送</p>
+                    <div class="mt-3">
+                        <button class="btn btn-primary px-4 shadow-sm" style="border-radius: 20px; font-weight: bold;" onclick="location.href='/VNishitetsu'">
+                            再生する ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 🚉 鉄道会社から探すエリア -->
+    <div class="mt-5 pt-4 border-top">
+        <h3 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #000000; margin-bottom: 25px;">
+            鉄道会社から探す
+        </h3>
+        
+        <div class="row g-3" id="companyCardsRowTrain">
+            <!-- 神戸新交通 -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Shinkotsu03.jpg" alt="神戸新交通" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">神戸新交通</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VShinkotsu'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 阪急電鉄 -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0.15s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Hankyu03.jpg" alt="阪急電鉄" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">阪急電鉄</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VHankyu'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 西日本鉄道 -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0.3s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Nishitetsu01.jpg" alt="西日本鉄道" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">西日本鉄道</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VNishitetsu'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 阪神電鉄 -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0.45s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Hanshin01.jpg" alt="阪神電鉄" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">阪神電鉄</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VHanshin'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 北大阪急行 -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0.6s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Kitakyu01.jpg" alt="北大阪急行" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">北大阪急行</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VKitakyu'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- rowの終わり -->
+    </div>    <!-- 🚌 バス会社から探すエリア -->
+    <div class="mt-5 pt-4 border-top">
+        <h3 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #000000; margin-bottom: 25px;">
+            バス会社から探す
+        </h3>
+        
+        <div class="row g-3" id="companyCardsRowBus">
+            
+            <!-- 神戸市バス -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Kobe06.jpg" alt="神戸市バス" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">神戸市バス</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VKobeBus'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 神姫バス -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0.15s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Shinki02.jpg" alt="神姫バス" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">神姫バス</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VShinki'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 広電バス -->
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0.3s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/Hiroden02.jpg" alt="広電バス" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">広電バス</h4>
+                        <button class="btn btn-outline-primary w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
+                                onclick="location.href='/VHirodenBus'">
+                            車内放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- rowの終わり -->
+    </div> <!-- バス会社エリアの終わり -->
+
+    <div style="height: 100px;"></div>
+</div> <!-- 一番外側の大きな箱（custom-container）の終わり -->
+
+<!-- 👇 スクロールして各会社カードをふわっと出すJavaScript 👇 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const delayCards = document.querySelectorAll(".fade-in-right-delay");
+        function checkCardScroll() {
+            const triggerBottom = window.innerHeight * 0.85;
+            delayCards.forEach(card => {
+                if (card.getBoundingClientRect().top < triggerBottom) {
+                    card.classList.add("show");
+                }
+            });
+        }
+        window.addEventListener("scroll", checkCardScroll);
+        checkCardScroll();
+    });
+</script>

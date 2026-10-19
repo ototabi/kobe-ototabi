@@ -1,0 +1,146 @@
+@page
+@model TrainModel
+@{
+    ViewData["Title"] = "車内放送アーカイブ";
+}
+
+<!-- 👇 Train.cshtml の一番上にある <style> 〜 </style> をこれに丸ごと差し替えます 👇 -->
+<style>
+    /* 外側のコンテナの幅制限と余白を完全にリセットします（ヘッダー画像用） */
+    .container, main, div.container {
+        max-width: 100% !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin: 0px !important;
+    }
+
+
+    /* 🌟 修正：下の文字やカードのエリアだけ、左右に綺麗な余白（24px）を持たせてど真ん中に寄せます！ */
+    .custom-container {
+        max-width: 1300px !important;
+        width: 92% !important;          /* 👈 画面の端っこにパツパツにならないようにします */
+        margin-left: auto !important;   /* 👈 左右を自動にすることで、完全に真ん中寄せになります */
+        margin-right: auto !important;  /* 👈 左右を自動にすることで、完全に真ん中寄せになります */
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        text-align: left !important;
+    }
+
+    /* 【ぷっくり浮かび上がる設定】 */
+    .hover-lift {
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important;
+    }
+    .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* 【スクロール出現の設定（ゆっくり1.3秒）】 */
+    .fade-in-right-delay {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-right-delay.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* 🌟 あなたの見つけた名推理！メニューバーを写真を突き破って最前面に出す魔法です */
+    nav.navbar {
+        position: absolute !important;
+        z-index: 99999 !important; 
+        width: 100%;
+    }
+</style>
+
+<!-- 👇 画像エリア：左右の隙間を無くして画面目一杯に広げました 👇 -->
+<div style="position: relative; width: 100%; height: 320px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
+    <!-- 1層目：神戸市バスの画像（左右目一杯） -->
+    <img src="/images/East02.JPG" alt="駅放送ヘッダー" style="width: 100%; height: 120%; object-fit: cover; display: block;" />
+    <!-- 2層目：薄黒いフィルター -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
+    <!-- 3層目：中央配置の文字エリア -->
+    <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); text-align: left; width: 90%;">
+        <h1 style="color: white; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; font-size: 2.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); margin: 0;">
+            🚉 駅放送アーカイブ
+        </h1>
+        <p style="color: #e0e0e0; font-size: 1rem; margin-top: 10px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); margin-bottom: 0;">
+            主に鉄道の駅放送をあつめたページです。
+        </p>
+    </div>
+</div>
+
+<!-- ここから下の「最近のコンテンツ」を囲む箱（真ん中寄せ設定） -->
+<div class="custom-container mt-5 py-4">
+    <!-- 見出しの箱 -->
+    <div class="border-bottom pb-3 mb-4">
+        <h1 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #000000; margin: 0;">
+            最近のコンテンツ
+        </h1>
+    </div>
+    
+    <!-- 放送一覧 -->
+    <div class="row g-4 mb-5">
+        <!-- 音源カード1：神戸市バス -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa;">
+                <div class="card-body p-4">
+                    <span class="badge bg-primary mb-2" style="font-size: 0.8rem; border-radius: 10px;">JR西日本</span>
+                    <h4 class="card-title font-weight-bold" style="font-size: 1.3rem; margin-bottom: 10px;">西宮駅　普通 徳庵行き</h4>
+                    <p class="card-text text-secondary" style="font-size: 0.95rem;">ダイヤ乱れ等でしか見ることのない、普通 徳庵行き。JR京都線　千里丘ー茨木間での人身事故により、大幅なダイヤ乱れが発生していました。
+
+                    </p>
+                    <div class="mt-3">
+                        <button class="btn btn-success px-4 shadow-sm" style="border-radius: 20px; font-weight: bold;" onclick="location.href='/SWest'">
+                            再生する ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 🚉 鉄道会社から探すエリア -->
+    <div class="mt-5 pt-4 border-top">
+        <h3 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #000000; margin-bottom: 25px;">
+            鉄道会社から探す
+        </h3>
+        
+        <div class="row g-3" id="companyCardsRowTrain">
+            <div class="col-xl-2 col-md-4 col-6 fade-in-right-delay" style="transition-delay: 0s;">
+                <div class="card h-100 shadow-sm hover-lift" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa; border: 1px solid rgba(0,0,0,0.12); padding: 12px;">
+                    <div style="width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                        <img src="/images/West05.jpg" alt="JR西日本" style="width: 100%; height: 100%; object-fit: cover;" />
+                    </div>
+                    <div class="card-body p-0 mt-2 text-center">
+                        <h4 class="card-title font-weight-bold" style="font-size: 1rem; margin-bottom: 10px; color: #333;">JR西日本</h4>
+                        <button class="btn btn-outline-sucsess w-100 btn-sm" style="border-radius: 20px; font-weight: bold; border-color: #198754; color: #198754; background-color: transparent; transition: all 0.3s ease;" 
+                                onmouseover="this.style.backgroundColor='#198754'; this.style.color='#ffffff';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#198754';"
+                                onclick="location.href='/SWest'">
+                            駅放送を聴く ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+    <div style="height: 100px;"></div>
+</div> <!-- 一番外側の大きな箱（custom-container）の終わり -->
+
+<!-- 👇 スクロールして各会社カードをふわっと出すJavaScript 👇 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const delayCards = document.querySelectorAll(".fade-in-right-delay");
+        function checkCardScroll() {
+            const triggerBottom = window.innerHeight * 0.85;
+            delayCards.forEach(card => {
+                if (card.getBoundingClientRect().top < triggerBottom) {
+                    card.classList.add("show");
+                }
+            });
+        }
+        window.addEventListener("scroll", checkCardScroll);
+        checkCardScroll();
+    });
+</script>

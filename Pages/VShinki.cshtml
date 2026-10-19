@@ -1,0 +1,96 @@
+@page
+@model VShinkiModel
+@{
+    ViewData["Title"] = "神姫バス - 車内放送";
+}
+
+<!-- 👇 修正版：漏れ出ていたCSSの文字を完璧にお掃除し、最前面に出す設定を合体させました 👇 -->
+<style>
+    /* 外側のコンテナの幅制限と余白を完全にリセットします（ヘッダー画像用） */
+    .container, main, div.container {
+        max-width: 100% !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin: 0px !important;
+    }
+
+    /* メインコンテンツエリアを綺麗に中央寄せにします */
+    .custom-container {
+        max-width: 1300px !important;
+        width: 95% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        text-align: left !important;
+    }
+
+    /* バス音源カード専用のデザイン */
+    .bus-card {
+        background-color: #ffe0bd9a !important;
+        border-radius: 20px !important;            
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important; 
+        padding: 40px !important;                  
+        margin-bottom: 30px !important;            
+        transition: all 0.5s ease;
+    }
+
+    /* YouTubeプレイヤーのまわりの15pxの隙間と角丸設定 */
+    .bus-card .video-space {
+        margin: 15px !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* 🌟 あなたの見つけた名推理！メニューバーを写真を突き破って最前面に出す魔法です */
+    nav.navbar {
+        position: absolute !important;
+        z-index: 99999 !important; 
+        width: 100%;
+    }
+</style>
+
+<!-- 👇 上部バナーエリア 👇 -->
+<div style="position: relative; width: 100%; height: 600px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
+    <img src="/images/Shinki01.jpg" alt="神姫バス" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
+    
+    <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); text-align: left; width: 90%;">
+        <span class="badge bg-primary mb-2" style="font-size: 0.9rem; border-radius: 10px; padding: 6px 12px;">車内放送</span>
+        <h1 style="color: white; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; font-size: 2.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); margin: 0; margin-top: 5px;">
+            神姫バス 車内放送アーカイブ
+        </h1>
+    </div>
+</div>
+
+<!-- 📦 動画がダーッと縦に並ぶメインエリア（ダブっていたのを1つに綺麗にまとめました！） -->
+<div class="custom-container mt-5 py-4">
+
+    <div id="busYa" class="bus-card">
+        <h3 class="font-weight-bold mb-4" style="color: #d28940;">山手線　神戸駅前→南京町東口（全区間）</h3>
+        
+        <div class="row align-items-start">
+            <!-- 👈 左側：YouTubeプレイヤー（15pxの綺麗な余白と角丸をあらかじめセット！） -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="video-space bg-dark p-2">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://youtube.com/embed/6L8-COOvzXE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 👉 右側：解説文エリア -->
+            <div class="col-lg-6 ps-lg-4 pt-3">
+                <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
+                    神戸市交通局から神戸交通振興、そしてそこから神姫バスに委託された山手線。青緑の車体が特徴だったのですが、26年4月1日に通常の神姫バスに変わりました。しかし、車内放送にお金をかけたくない神姫バスさんは、ツギハギの車内放送をそのまま引き継いでいます。旧神戸市バスの車内放送が聴ける貴重な路線です。なお、発車注意喚起放送と停車放送は、違う読み上げソフトを使用しています。
+                </p>
+                <div style="color: #555555; font-size: 0.95rem; line-height: 1.6; border-top: 1px dashed #ccc; padding-top: 15px;">
+                    <strong>録音機器：</strong> iPhone12<br />
+                    <strong>録音日：</strong> 26年9月5日<br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- 一番外側の大きな箱（custom-container）の終わり -->

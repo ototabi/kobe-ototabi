@@ -1,0 +1,85 @@
+@page
+@model VHanshinModel
+@{
+    ViewData["Title"] = "阪神電鉄 - 車内放送";
+}
+
+<style>
+    .container, main, div.container {
+        max-width: 100% !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin: 0px !important;
+    }
+
+    .custom-container {
+        max-width: 1300px !important;
+        width: 95% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        text-align: left !important;
+    }
+
+    .bus-card {
+        background-color: #0669f32e !important;
+        border-radius: 20px !important;            
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important; 
+        padding: 40px !important;                  
+        margin-bottom: 30px !important;            
+        transition: all 0.5s ease;
+    }
+
+    .bus-card .video-space {
+        margin: 15px !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    nav.navbar {
+        position: absolute !important;
+        z-index: 99999 !important; 
+        width: 100%;
+    }
+</style>
+
+<div style="position: relative; width: 100%; height: 600px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
+    <img src="/images/Hanshin03.jpg" alt="阪神電鉄" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
+    
+    <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); text-align: left; width: 90%;">
+        <span class="badge bg-primary mb-2" style="font-size: 0.9rem; border-radius: 10px; padding: 6px 12px;">車内放送</span>
+        <h1 style="color: white; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; font-size: 2.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); margin: 0; margin-top: 5px;">
+            阪神電鉄 車内放送アーカイブ
+        </h1>
+    </div>
+</div>
+
+<div class="custom-container mt-5 py-4">
+
+    <div id="busNa" class="bus-card">
+        <h3 class="font-weight-bold mb-4" style="color: #4051d2;">なんば線　桜川→神戸三宮（阪神区間のみ）</h3>
+        
+        <div class="row align-items-start">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="video-space bg-dark p-2">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://youtube.com/embed/znmUvzPcAKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 ps-lg-4 pt-3">
+                <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
+                    阪神なんば線を走るすべての電車において、ほとんどは大阪難波から近鉄線に直通（逆も）します。しかし、近鉄と阪神の乗務員交代は、大阪難波から一駅阪神側の桜川駅で行われます。そのため、近鉄車・阪神車に限らず、大阪難波〜桜川駅間は阪神区間なのに近鉄の車内放送（有田・ロビンソンペアの）が流れます。
+                </p>
+                <div style="color: #555555; font-size: 0.95rem; line-height: 1.6; border-top: 1px dashed #ccc; padding-top: 15px;">
+                    <strong>録音機器：</strong> AudioTechnica AT2040USB<br />
+                    <strong>録音日：</strong> 26年9月19日<br />
+                </div>
+            </div>
+        </div>
+    </div>
+

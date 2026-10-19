@@ -1,0 +1,28 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "エラー";
+}
+
+<div class="container text-center py-5 mt-5" style="max-width: 600px;">
+    <!-- 🎧 音で旅する停留所専用の優しい日本語デザインに手直ししました -->
+    <h1 class="text-danger display-4 font-weight-bold mb-4">Error.</h1>
+    <h2 class="h4 text-secondary mb-4">おっと、ページを読み込む際にエラーが発生したようです。</h2>
+    
+    <p class="text-muted mb-5">
+        URLが間違っているか、ページが移動した可能性があります。<br>
+        上のメニューからホームに戻るか、もう一度お試しください。
+    </p>
+
+    @if (Model.ShowRequestId)
+    {
+        <p class="text-muted small">
+            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        </p>
+    }
+
+    <!-- ホームに戻るボタン（C#の正しいルート仕様です） -->
+    <a href="/Index" class="btn btn-primary px-4 py-2" style="border-radius: 10px;">
+        ホームに戻る
+    </a>
+</div>
