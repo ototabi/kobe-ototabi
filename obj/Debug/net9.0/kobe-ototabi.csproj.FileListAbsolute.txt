@@ -96,4 +96,3 @@
 /Users/Sho/Desktop/kobe-ototabi/obj/Debug/net9.0/ref/kobe-ototabi.dll
 /Users/Sho/Desktop/kobe-ototabi/obj/Debug/net9.0/kobe-ototabi.sourcelink.json
 /Users/Sho/Desktop/kobe-ototabi/obj/Debug/net9.0/compressed/liv329l1va-{0}-e1zjtk3g7g-e1zjtk3g7g.gz
-/Users/Sho/Desktop/kobe-ototabi/obj/Debug/net9.0/compressed/22dm1sc2lj-{0}-lv5tvmajl9-lv5tvmajl9.gz

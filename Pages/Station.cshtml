@@ -4,9 +4,7 @@
     ViewData["Title"] = "車内放送アーカイブ";
 }
 
-<!-- 👇 Train.cshtml の一番上にある <style> 〜 </style> をこれに丸ごと差し替えます 👇 -->
 <style>
-    /* 外側のコンテナの幅制限と余白を完全にリセットします（ヘッダー画像用） */
     .container, main, div.container {
         max-width: 100% !important;
         padding-left: 0px !important;
@@ -15,7 +13,6 @@
     }
 
 
-    /* 🌟 修正：下の文字やカードのエリアだけ、左右に綺麗な余白（24px）を持たせてど真ん中に寄せます！ */
     .custom-container {
         max-width: 1300px !important;
         width: 92% !important;          /* 👈 画面の端っこにパツパツにならないようにします */
@@ -26,7 +23,6 @@
         text-align: left !important;
     }
 
-    /* 【ぷっくり浮かび上がる設定】 */
     .hover-lift {
         transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important;
     }
@@ -35,7 +31,6 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
     }
 
-    /* 【スクロール出現の設定（ゆっくり1.3秒）】 */
     .fade-in-right-delay {
         opacity: 0;
         transform: translateX(50px);
@@ -46,7 +41,6 @@
         transform: translateX(0);
     }
 
-    /* 🌟 あなたの見つけた名推理！メニューバーを写真を突き破って最前面に出す魔法です */
     nav.navbar {
         position: absolute !important;
         z-index: 99999 !important; 
@@ -54,13 +48,9 @@
     }
 </style>
 
-<!-- 👇 画像エリア：左右の隙間を無くして画面目一杯に広げました 👇 -->
 <div style="position: relative; width: 100%; height: 320px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
-    <!-- 1層目：神戸市バスの画像（左右目一杯） -->
     <img src="/images/East02.JPG" alt="駅放送ヘッダー" style="width: 100%; height: 120%; object-fit: cover; display: block;" />
-    <!-- 2層目：薄黒いフィルター -->
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
-    <!-- 3層目：中央配置の文字エリア -->
     <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); text-align: left; width: 90%;">
         <h1 style="color: white; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; font-size: 2.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); margin: 0;">
             🚉 駅放送アーカイブ
@@ -71,18 +61,14 @@
     </div>
 </div>
 
-<!-- ここから下の「最近のコンテンツ」を囲む箱（真ん中寄せ設定） -->
 <div class="custom-container mt-5 py-4">
-    <!-- 見出しの箱 -->
     <div class="border-bottom pb-3 mb-4">
         <h1 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #000000; margin: 0;">
             最近のコンテンツ
         </h1>
     </div>
     
-    <!-- 放送一覧 -->
     <div class="row g-4 mb-5">
-        <!-- 音源カード1：神戸市バス -->
         <div class="col-md-6">
             <div class="card h-100 shadow-sm" style="border-radius: 15px; overflow: hidden; background-color: #f8f9fa;">
                 <div class="card-body p-4">
@@ -100,7 +86,6 @@
             </div>
         </div>
 
-    <!-- 🚉 鉄道会社から探すエリア -->
     <div class="mt-5 pt-4 border-top">
         <h3 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #000000; margin-bottom: 25px;">
             鉄道会社から探す
@@ -126,9 +111,8 @@
 
 
     <div style="height: 100px;"></div>
-</div> <!-- 一番外側の大きな箱（custom-container）の終わり -->
+</div> 
 
-<!-- 👇 スクロールして各会社カードをふわっと出すJavaScript 👇 -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const delayCards = document.querySelectorAll(".fade-in-right-delay");

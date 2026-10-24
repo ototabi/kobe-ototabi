@@ -4,9 +4,7 @@
     ViewData["Title"] = "西日本鉄道 - 車内放送";
 }
 
-<!-- 👇 修正版：漏れ出ていたCSSの文字を完璧にお掃除し、最前面に出す設定を合体させました 👇 -->
 <style>
-    /* 外側のコンテナの幅制限と余白を完全にリセットします（ヘッダー画像用） */
     .container, main, div.container {
         max-width: 100% !important;
         padding-left: 0px !important;
@@ -14,7 +12,6 @@
         margin: 0px !important;
     }
 
-    /* メインコンテンツエリアを綺麗に中央寄せにします */
     .custom-container {
         max-width: 1300px !important;
         width: 95% !important;
@@ -25,7 +22,6 @@
         text-align: left !important;
     }
 
-    /* バス音源カード専用のデザイン */
     .bus-card {
         background-color: #bdf9ffc5 !important;
         border-radius: 20px !important;            
@@ -35,7 +31,6 @@
         transition: all 0.5s ease;
     }
 
-    /* YouTubeプレイヤーのまわりの15pxの隙間と角丸設定 */
     .bus-card .video-space {
         margin: 15px !important;
         border-radius: 12px !important;
@@ -43,7 +38,6 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    /* 🌟 あなたの見つけた名推理！メニューバーを写真を突き破って最前面に出す魔法です */
     nav.navbar {
         position: absolute !important;
         z-index: 99999 !important; 
@@ -51,7 +45,6 @@
     }
 </style>
 
-<!-- 👇 上部バナーエリア 👇 -->
 <div style="position: relative; width: 100%; height: 600px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
     <img src="/images/Nishitetsu04.jpg" alt="西日本鉄道" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
@@ -64,14 +57,12 @@
     </div>
 </div>
 
-<!-- 📦 動画がダーッと縦に並ぶメインエリア（ダブっていたのを1つに綺麗にまとめました！） -->
 <div class="custom-container mt-5 py-4">
 
     <div id="busDa" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #35afd1;">太宰府線　二日市→太宰府　旅人車両（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー（15pxの綺麗な余白と角丸をあらかじめセット！） -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -80,7 +71,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     西鉄と略されている西日本鉄道は、有名観光地である太宰府への唯一の鉄道路線である太宰府線を持ちます。車内放送は三浦七緒子さんとクリステルチアリさんと、すごく関東風の車内放送です。なお、旅人では、四ヶ国語放送が流れる上に、旅人の案内放送も流れます。普通は日英中韓の順番なのに対し、九州では日英韓中の順番になっています。
@@ -97,7 +87,6 @@
         <h3 class="font-weight-bold mb-4" style="color: #35afd1;">太宰府線　太宰府→二日市（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー（15pxの綺麗な余白と角丸をあらかじめセット！） -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -106,7 +95,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     西鉄と略されている西日本鉄道は、有名観光地である太宰府への唯一の鉄道路線である太宰府線を持ちます。車内放送は三浦七緒子さんとクリステルチアリさんと、すごく関東風の車内放送です。なお、録音した車両は通常の西鉄9000形で、日英のみの単調な車内放送でしたが、旅人では違う放送も用意されています。
@@ -119,4 +107,4 @@
         </div>
     </div>
 
-</div> <!-- 一番外側の大きな箱（custom-container）の終わり -->
+</div> 

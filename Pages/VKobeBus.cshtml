@@ -4,9 +4,7 @@
     ViewData["Title"] = "神戸市バス - 車内放送";
 }
 
-<!-- 👇 修正版：漏れ出ていたCSSの文字を完璧にお掃除し、最前面に出す設定を合体させました 👇 -->
 <style>
-    /* 外側のコンテナの幅制限と余白を完全にリセットします（ヘッダー画像用） */
     .container, main, div.container {
         max-width: 100% !important;
         padding-left: 0px !important;
@@ -14,7 +12,6 @@
         margin: 0px !important;
     }
 
-    /* メインコンテンツエリアを綺麗に中央寄せにします */
     .custom-container {
         max-width: 1300px !important;
         width: 95% !important;
@@ -25,7 +22,6 @@
         text-align: left !important;
     }
 
-    /* バス音源カード専用のデザイン */
     .bus-card {
         background-color: #d8f8d99a !important;
         border-radius: 20px !important;            
@@ -35,7 +31,6 @@
         transition: all 0.5s ease;
     }
 
-    /* YouTubeプレイヤーのまわりの15pxの隙間と角丸設定 */
     .bus-card .video-space {
         margin: 15px !important;
         border-radius: 12px !important;
@@ -43,7 +38,6 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    /* 🌟 あなたの見つけた名推理！メニューバーを写真を突き破って最前面に出す魔法です */
     nav.navbar {
         position: absolute !important;
         z-index: 99999 !important; 
@@ -51,7 +45,6 @@
     }
 </style>
 
-<!-- 👇 上部バナーエリア 👇 -->
 <div style="position: relative; width: 100%; height: 600px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
     <img src="/images/Kobe05.jpg" alt="神戸市バスヘッダー" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
@@ -64,19 +57,12 @@
     </div>
 </div>
 
-<!-- 📦 動画がダーッと縦に並ぶメインエリア -->
 <div class="custom-container mt-5 py-4">
 
-
-<!-- 📦 動画がダーッと縦に並ぶメインエリア（中央寄せ設定） -->
-<div class="custom-container mt-5 py-4">
-
-    <!-- 🚌 【38系統】阪神御影→渦森台（全区間） -->
     <div id="bus38a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">38系統　阪神御影→渦森台（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー（15pxの綺麗な余白と角丸をあらかじめセット！） -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -85,7 +71,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     38系統は、阪神御影から北上し、渦森台まで向かう路線です。本数も15分おきとそこところで、それなりに乗車人数も多くありました。白鶴美術館あたりからカーブが多くなり、徐々に上へ上ります。担当は魚崎営業所です。最近ではワンステップバスは少なくなってきていますが、カーブや坂が急なものがあるので、運用に入ることはたまにあります。
@@ -97,12 +82,12 @@
             </div>
         </div>
     </div>
-    <!-- 🚌 【急行64系統】三宮駅ターミナル前→神戸北町（全区間） -->
+
+
     <div id="bus64a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">急行64系統　三宮駅ターミナル前→神戸北町（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -111,7 +96,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     JR三ノ宮駅中央改札口から抜けた、三宮バスセンターの手前にある、三宮駅ターミナル前から出発します。途中の地下鉄三宮駅前は三宮エリア最後の停留所となり、そこから加納町バス停を経由せずに新神戸まで。新神戸トンネルを経て箕谷・北町方面へ向かいます。北町操車場の入口が神戸北町バス停よりも手前のため、一つ前の大原3丁目バス停を終着とします。
@@ -125,12 +109,10 @@
     </div>
 
 
-    <!-- 🚌 【臨時65系統】神戸駅前→鵯越墓園（全区間） -->
     <div id="bus65a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">臨時65系統　神戸駅前→鵯越墓園（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -139,7 +121,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     神戸駅からひよどり台までを結ぶ65系統ですが、秋・春の彼岸期間には、鵯越墓園まで直接乗り入れる便が増設されます。鵯越駅前を出ると、鵯越墓園の南口のロータリー内に停車します。そのまま帰りは通常の65系統として戻ります。なお、65系統は27年4月1日のダイヤ改正で本数が減便される見込みです。
@@ -151,12 +132,12 @@
             </div>
         </div>
     </div>
-    <!-- 🚌 【73系統】妙法寺駅前→名谷駅前（全区間） -->
+
+
     <div id="bus73a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">73系統　妙法寺駅前→名谷駅前（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -165,7 +146,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     妙法寺駅と名谷駅という、バスターミナルがある二つの地下鉄駅を結ぶ路線です。基本的に地下鉄と並行する路線は削られていますが、利用者数が多く、黒字路線のため残っています。26年8月のダイヤ改正により、須磨一の谷から北須磨団地まで運行する71系統が廃止されたのに伴い、乗車人数が若干増えた感じが見受けられます。
@@ -179,12 +159,10 @@
     </div>
     
 
-    <!-- 🚌 【75系統】妙法寺駅前→須磨一の谷（全区間） -->
     <div id="bus75a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">75系統　妙法寺駅前→須磨一の谷（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -193,7 +171,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     妙法寺駅から須磨一の谷まで行くバス路線です。26年8月のダイヤ改正により本数は朝ラッシュ時間帯は増便されましたが、日中時間帯は減便されました。また北須磨団地と須磨一の谷を結ぶ71系統が廃止になったことから、名谷から来た73系統から乗り換える方が一定数いました。<br/>
@@ -208,12 +185,10 @@
     </div>
     
 
-    <!-- 🚌 【80系統】高尾台→JR鷹取駅前（全区間） -->
     <div id="bus80a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">80系統　高尾台→JR鷹取駅前（全区間）</h3>
         
         <div class="row align-items-start">
-            <!-- 👈 左側：YouTubeプレイヤー -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="video-space bg-dark p-2">
                     <div class="ratio ratio-16x9">
@@ -222,7 +197,6 @@
                 </div>
             </div>
             
-            <!-- 👉 右側：解説文エリア -->
             <div class="col-lg-6 ps-lg-4 pt-3">
                 <p style="color: #333333; line-height: 1.8; font-size: 1.05rem; margin-bottom: 20px;">
                     離宮公園から少し離れたところにある高尾台とJR鷹取駅を結びます。26年8月のダイヤ改正により、新長田からの列車が廃止になったほか、本数も一時間に一本となりました。またダイヤ改正前、JR鷹取駅前バス停に乗り入れていた路線は80系統の他10、75、110、112の5つだったのがたった1つに減らされ、せっかくのターミナル風のバス停が寂しく見えます。
@@ -234,7 +208,8 @@
             </div>
         </div>
     </div>
-    <!-- 🚌 【81系統】須磨一の谷→須磨一の谷 小寺町まわり（全区間） -->
+
+
     <div id="bus81a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">81系統　須磨一の谷→須磨一の谷 小寺町まわり（全区間）</h3>
         
@@ -259,7 +234,6 @@
         </div>
     </div>
 
-    <!-- 🚌 【81系統】須磨一の谷→須磨一の谷 鷹取町まわり（全区間） -->
     <div id="bus81b" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">81系統　須磨一の谷→須磨一の谷 鷹取町まわり（全区間）</h3>
         
@@ -284,7 +258,6 @@
         </div>
     </div>
 
-    <!-- 🚌 【96系統】神戸駅前→松原通5丁目（全区間） -->
     <div id="bus96a" class="bus-card">
         <h3 class="font-weight-bold mb-4" style="color: #28a745;">96系統　神戸駅前→松原通5丁目（全区間）</h3>
         
@@ -309,9 +282,9 @@
         </div>
     </div>
 
-</div> <!-- 一番外側の大きな箱（custom-container）の終わり -->
+</div> 
 
-<!-- 🏎️ ページを開いた瞬間に、指定の動画まで「ふんわり自動スクロール」させるJavaScript -->
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (window.location.hash) {
@@ -319,14 +292,12 @@
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // ページが完全に読み込まれるまで0.4秒だけ優しく待機させます
                 setTimeout(function () {
                     targetElement.scrollIntoView({
                         behavior: "smooth", 
                         block: "center"     
                     });
                     
-                    // スクロール完了後に臨時65系統などを緑色のカッコいい光で包む演出
                     setTimeout(function() {
                         targetElement.style.boxShadow = "0 0 30px rgba(40, 167, 69, 0.4)";
                         targetElement.style.border = "1px solid rgba(40, 167, 69, 0.3)";

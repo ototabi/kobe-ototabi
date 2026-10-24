@@ -3,8 +3,6 @@
 @{
     ViewData["Title"] = "ホーム";
 }
-<!-- 👇 新しいプロジェクトの白い左右・上の隙間を100%強制的にゼロにし、ヘッダーを消す魔法の設定 👇 -->
-<!-- 👇 新しいプロジェクトの白い左右・上の隙間を100%強制的にゼロにし、ヘッダーを消す魔法の設定 👇 -->
 <style>
     /* 外側のコンテナの幅制限と余白を完全にリセットします（写真スライダー用） */
     .container, main, div.container {
@@ -44,7 +42,6 @@ header {
     }
 </style>
 
-<!-- カッコいい動きをつけるための専用のデザイン設定（CSS） -->
 <style>
     @@keyframes fadeInUp {
         from {
@@ -61,7 +58,6 @@ header {
         animation: fadeInUp 1.2s ease-out forwards;
     }
 
-    /* スマホ用の文字サイズ自動調整 */
     @@media (max-width: 768px) {
         .hero-title {
             font-size: 2.5rem !important;
@@ -73,10 +69,8 @@ header {
 </style>
 
 <div class="text-center">
-    <!-- メインビジュアルエリア（ヒーローヘッダー） -->
     <div style="position: relative; width: 100%; height: 60vh; min-height: 400px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
         
-        <!-- 1層目（一番下）：自動で切り替わる画像スライダー（4秒おきフェード） -->
         <div id="busHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000" style="width: 100%; height: 100%;">
             <div class="carousel-inner" style="width: 100%; height: 100%;">
                 
@@ -97,15 +91,15 @@ header {
                 </div>
 
                 <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Shinki02.jpg" alt="神姫バス" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    <img src="/images/Shinki03.jpg" alt="神姫バス" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 </div>
 
                 <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Nishitetsu03.jpg" alt="西日本鉄道" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    <img src="/images/Nishitetsu02.jpg" alt="西日本鉄道" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 </div>
 
                 <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Hanshin01.jpg" alt="阪神電鉄" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    <img src="/images/Hanshin04.jpg" alt="阪神電鉄" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 </div>
 
                 <div class="carousel-item" style="width: 100%; height: 100%;">
@@ -124,10 +118,8 @@ header {
             </div>
         </div>
 
-        <!-- 2層目（真ん中）：薄黒いフィルター -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); z-index: 1;"></div>
 
-        <!-- 3層目（一番上）：写真の上に重ねる巨大なタイトル文字 -->
         <div class="animate-hero-text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; z-index: 2;">
             <h1 class="hero-title" style="color: white; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; font-size: 4rem; text-shadow: 2px 2px 15px rgba(0,0,0,0.7); margin: 0; letter-spacing: 3px;">
                 音で旅する停留所
@@ -139,7 +131,6 @@ header {
 
     </div>
 
-    <!-- 画像の下のコンテンツエリア -->
     <div class="container mt-5 py-4" style="max-width: 800px;">
         <p style="font-size: 1.1rem; color: #444; line-height: 1.8;">このサイトは、主に関西圏のバスや鉄道の車内放送をアップしています！</p>
         <p style="font-size: 1.1rem; color: #444; line-height: 1.8;">YouTubeもやってるのでぜひ見てください！</p>
@@ -152,7 +143,6 @@ header {
     </div>
 </div>
 
-<!-- 横からふわっと出る角丸四角形の箱（カード型デザイン） -->
 <style>
     .fade-in-left {
         opacity: 0;
@@ -172,7 +162,6 @@ header {
             <img src="/images/Hankyu04.jpg" alt="車内放送イメージ" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px;" />
         </div>
         
-        <!-- 💡 ps-md-4 の後ろに「pe-md-5」を追加して、右側にもゆったりした空白を作りました！ -->
         <div class="col-md-7 ps-md-4 pe-md-5">
             <h2 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #007bff; margin-bottom: 15px;">
                   車内放送
@@ -193,15 +182,12 @@ header {
 
     </div>
 </div>
-<!-- 🚉 駅放送コーナー（右からふわっと出現・薄緑背景） -->
 <style>
-    /* 最初は透明で、右側に35pxズレて隠れている状態 */
     .fade-in-right {
         opacity: 0;
         transform: translateX(35px);
         transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    /* スクロールしてこのクラス（合図）がついたら、元の位置に戻りながらクッキリ表示 */
     .fade-in-right.show {
         opacity: 1;
         transform: translateX(0);
@@ -215,7 +201,6 @@ header {
             <img src="/images/Shinkansen01.jpg" alt="駅放送イメージ" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px;" />
         </div>
         
-        <!-- 💡 ここにも「pe-md-5」を追加して、文字の右側に綺麗なすき間を作りました！ -->
         <div class="col-md-7 ps-md-4 pe-md-5">
             <h2 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #28a745; margin-bottom: 15px;">
                   駅放送
@@ -237,7 +222,6 @@ header {
     </div>
 </div>
 
-<!-- 🚩 その他コーナー（左からふわっと出現・薄赤背景） -->
 <div id="otherScrollContent" class="container my-5 p-4 fade-in-left" style="max-width: 800px; background-color: #fdf2f2; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left;">
     <div class="row align-items-center">
         
@@ -245,7 +229,6 @@ header {
             <img src="/images/Hanshin02.jpg" alt="その他イメージ" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px;" />
         </div>
         
-        <!-- 💡 ここにも同じく「pe-md-5」を合体させて、窮屈感をバッチリ解消しました！ -->
         <div class="col-md-7 ps-md-4 pe-md-5">
             <h2 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #dc3545; margin-bottom: 15px;">
                   その他
@@ -269,7 +252,6 @@ header {
 
 <div style="height: 100px;"></div>
 
-<!-- 👇 スクロールしてふわっと出すJavaScript 👇 -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const trainBox = document.getElementById("scrollContent");
