@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("kobe-ototabi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97dbe095ebfaf0a843507bfb031ea55c78187863")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33852f96d96be7973ca8239852f110388dd119c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("kobe-ototabi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("kobe-ototabi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
