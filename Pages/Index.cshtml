@@ -75,47 +75,7 @@ header {
             <div class="carousel-inner" style="width: 100%; height: 100%;">
                 
                 <div class="carousel-item active" style="width: 100%; height: 100%;">
-                    <img src="/images/Kobe02.jpg" alt="神戸市バス" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Shinkotsu01.jpg" alt="神戸新交通" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Hiroden02.jpg" alt="広電バス" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Hankyu02.jpg" alt="阪急電鉄" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Shinki03.jpg" alt="神姫バス" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Nishitetsu02.jpg" alt="西日本鉄道" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Hanshin04.jpg" alt="阪神電鉄" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Metro01.jpg" alt="大阪メトロ" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-               
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/Shinkansen02.jpg" alt="東海道新幹線" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="/images/West02.jpg" alt="JR西日本" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                </div>
-
-                <div class="carousel-item" style="width: 100%; height: 100%;">
-                    <img src="https://i.imgur.com/WcBGI3l.jpeg" alt="京急" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    <img src="/images/Kobe03.jpg" alt="神戸市バス" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 </div>
 
             </div>
@@ -147,136 +107,192 @@ header {
 </div>
 
 <style>
-    .fade-in-left {
+    .ototabi-cards-wrapper {
+        width: 94% !important;           /* 90% → 94% に少し広げる */
+        max-width: 1400px !important;    /* 1100px → 1400px に広げて16:9でも大きく表示 */
+        margin: 3rem auto !important;
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        overflow: visible !important;
+    }
+
+    /* PC・iPad横向き（992px以上）は2列、スマホ・タブレット縦は1列 */
+    .ototabi-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 30px !important;            /* カード同士の間隔も少しゆったりに */
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    @@media (max-width: 991px) {
+        .ototabi-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+    /* アニメーション */
+    .fade-in-left, .fade-in-right {
         opacity: 0;
         transform: translateX(-35px);
         transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .fade-in-left.show {
-        opacity: 1;
-        transform: translateX(0);
-    }
-</style>
-
-<div id="scrollContent" class="container my-5 p-4 fade-in-left" style="max-width: 800px; background-color: #ceecfa; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left;">
-    <div class="row align-items-center">
-        
-        <div class="col-md-5 mb-3 mb-md-0">
-            <img src="/images/Hankyu04.jpg" alt="車内放送イメージ" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px;" />
-        </div>
-        
-        <div class="col-md-7 ps-md-4 pe-md-5">
-            <h2 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #007bff; margin-bottom: 15px;">
-                  車内放送
-            </h2>
-            <p style="color: #555; line-height: 1.7; font-size: 1rem; margin-bottom: 20px;">
-                鉄道やバスの車内で流れる、車内放送を録音しました。「全区間」にこだわっており、最初から最後まで聞き通せます。ぜひお楽しみください。
-            </p>
-            
-            <div class="mt-3">
-                <button class="btn btn-outline-primary px-4" style="border-radius: 20px; font-weight: bold; border-color: #007bff; color: #007bff; transition: all 0.3s ease;" 
-                        onmouseover="this.style.backgroundColor='#007bff'; this.style.color='#ffffff';" 
-                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#007bff';"
-                        onclick="location.href='/Train'">
-                    車内放送を聴く →
-                </button>
-            </div>
-        </div>
-
-    </div>
-</div>
-<style>
     .fade-in-right {
-        opacity: 0;
         transform: translateX(35px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .fade-in-right.show {
+    .fade-in-left.show, .fade-in-right.show {
         opacity: 1;
         transform: translateX(0);
     }
+
+    /* カード本体 */
+    .ototabi-card-box {
+        border-radius: 20px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+        padding: 28px !important;
+        margin: 0 !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 24px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* スマホなど画面が狭いときはカード内を縦並びに */
+    @@media (max-width: 575px) {
+        .ototabi-card-box {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+        }
+    }
+
+    /* 画像エリア */
+    .ototabi-card-img-wrap {
+        flex: 0 0 44% !important;
+        width: 44% !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    @@media (max-width: 575px) {
+        .ototabi-card-img-wrap {
+            flex: none !important;
+            width: 100% !important;
+        }
+    }
+
+    .ototabi-card-img {
+        width: 100% !important;
+        height: 210px !important;        /* 180px → 210px に少し大きく */
+        object-fit: cover !important;
+        border-radius: 15px !important;
+        display: block !important;
+    }
+
+    /* テキストエリア */
+    .ototabi-card-body {
+        flex: 1 !important;
+        text-align: left !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .ototabi-card-title {
+        font-family: 'Hiragino Kaku Gothic ProN', sans-serif !important;
+        font-weight: bold !important;
+        font-size: 1.5rem !important;
+        margin: 0 0 12px 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+    .ototabi-card-text {
+        color: #555 !important;
+        line-height: 1.7 !important;
+        font-size: 1rem !important;
+        margin: 0 0 18px 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+    }
 </style>
 
-<div id="stationScrollContent" class="container my-5 p-4 fade-in-right" style="max-width: 800px; background-color: #eafaf1; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left;">
-    <div class="row align-items-center">
+<div class="ototabi-cards-wrapper">
+    <div class="ototabi-grid">
         
-        <div class="col-md-5 mb-3 mb-md-0">
-            <img src="/images/Shinkansen01.jpg" alt="駅放送イメージ" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px;" />
+        <!-- 1つ目：車内放送 -->
+        <div class="fade-in-left ototabi-card-box" style="background-color: #ceecfa !important;">
+            <div class="ototabi-card-img-wrap">
+                <img src="/images/Hanshin04.jpg" alt="車内放送イメージ" class="ototabi-card-img" />
+            </div>
+            <div class="ototabi-card-body">
+                <h2 class="ototabi-card-title" style="color: #007bff !important;">車内放送</h2>
+                <p class="ototabi-card-text">
+                    鉄道やバスの車内で流れる、車内放送を録音しました。「全区間」にこだわっており、最初から最後まで聞き通せます。ぜひお楽しみください。
+                </p>
+                <a href="/Train" class="btn btn-outline-primary px-4 fw-bold" style="border-radius: 20px;">
+                    車内放送を聴く →
+                </a>
+            </div>
         </div>
-        
-        <div class="col-md-7 ps-md-4 pe-md-5">
-            <h2 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #28a745; margin-bottom: 15px;">
-                  駅放送
-            </h2>
-            <p style="color: #555; line-height: 1.7; font-size: 1rem; margin-bottom: 20px;">
-                鉄道の駅で流れる駅放送を録音しました。イベント時や異常・遅延時限定の放送などもあります。ぜひお楽しみください。
-            
-            <div class="mt-3">
-                <button class="btn btn-outline-success px-4" style="border-radius: 20px; font-weight: bold; border-color: #28a745; color: #28a745; transition: all 0.3s ease; background-color: transparent;" 
-                        onmouseover="this.style.backgroundColor='#28a745'; this.style.color='#ffffff';" 
-                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#28a745';"
-                        onclick="location.href='/Station'">
 
+        <!-- 2つ目：駅放送 -->
+        <div class="fade-in-right ototabi-card-box" style="background-color: #eafaf1 !important;">
+            <div class="ototabi-card-img-wrap">
+                <img src="/images/West01.jpg" alt="駅放送イメージ" class="ototabi-card-img" />
+            </div>
+            <div class="ototabi-card-body">
+                <h2 class="ototabi-card-title" style="color: #28a745 !important;">駅放送</h2>
+                <p class="ototabi-card-text">
+                    鉄道の駅で流れる駅放送を録音しました。イベント時や異常・遅延時限定の放送などもあります。ぜひお楽しみください。
+                </p>
+                <a href="/Station" class="btn btn-outline-success px-4 fw-bold" style="border-radius: 20px;">
                     駅放送を聴く →
-                </button>
+                </a>
             </div>
         </div>
 
-    </div>
-</div>
-
-<div id="otherScrollContent" class="container my-5 p-4 fade-in-left" style="max-width: 800px; background-color: #fdf2f2; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left;">
-    <div class="row align-items-center">
-        
-        <div class="col-md-5 mb-3 mb-md-0">
-            <img src="/images/Hanshin02.jpg" alt="その他イメージ" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px;" />
-        </div>
-        
-        <div class="col-md-7 ps-md-4 pe-md-5">
-            <h2 style="font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; color: #dc3545; margin-bottom: 15px;">
-                  その他
-            </h2>
-            <p style="color: #555; line-height: 1.7; font-size: 1rem; margin-bottom: 20px;">
-                前面展望や、車内放送装置再現のプログラミングなど、投稿が少ないものです。ぜひお楽しみください。
-            </p>
-            
-            <div class="mt-3">
-                <button class="btn btn-outline-danger px-4" style="border-radius: 20px; font-weight: bold; border-color: #dc3545; color: #dc3545; transition: all 0.3s ease; background-color: transparent;" 
-                        onmouseover="this.style.backgroundColor='#dc3545'; this.style.color='#ffffff';" 
-                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#dc3545';"
-                        onclick="location.href='/Other'">
+        <!-- 3つ目：その他 -->
+        <div class="fade-in-left ototabi-card-box" style="background-color: #fdf2f2 !important;">
+            <div class="ototabi-card-img-wrap">
+                <img src="/images/Hanshin01.jpg" alt="その他イメージ" class="ototabi-card-img" />
+            </div>
+            <div class="ototabi-card-body">
+                <h2 class="ototabi-card-title" style="color: #dc3545 !important;">その他</h2>
+                <p class="ototabi-card-text">
+                    前面展望や、車内放送装置再現のプログラミングなど、投稿が少ないものです。ぜひお楽しみください。
+                </p>
+                <a href="/Other" class="btn btn-outline-danger px-4 fw-bold" style="border-radius: 20px;">
                     その他を見る →
-                </button>
+                </a>
             </div>
         </div>
 
     </div>
 </div>
 
-<div style="height: 100px;"></div>
+<div style="height: 100px; background: transparent !important;"></div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const trainBox = document.getElementById("scrollContent");
-        const stationBox = document.getElementById("stationScrollContent");
-        const otherBox = document.getElementById("otherScrollContent");
-        
+        const boxes = document.querySelectorAll(".fade-in-left, .fade-in-right");
         function checkScroll() {
             const triggerBottom = window.innerHeight * 0.85;
-            
-            if (trainBox && trainBox.getBoundingClientRect().top < triggerBottom) {
-                trainBox.classList.add("show");
-            }
-            if (stationBox && stationBox.getBoundingClientRect().top < triggerBottom) {
-                stationBox.classList.add("show");
-            }
-            if (otherBox && otherBox.getBoundingClientRect().top < triggerBottom) {
-                otherBox.classList.add("show");
-            }
+            boxes.forEach(box => {
+                if (box.getBoundingClientRect().top < triggerBottom) {
+                    box.classList.add("show");
+                }
+            });
         }
-        
         window.addEventListener("scroll", checkScroll);
         checkScroll();
     });
 </script>
-

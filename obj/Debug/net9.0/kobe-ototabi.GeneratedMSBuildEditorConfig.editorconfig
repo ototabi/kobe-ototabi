@@ -63,6 +63,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVkhhbnNoaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/Sho/Desktop/kobe-ototabi/Pages/VHiroden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVkhpcm9kZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/Sho/Desktop/kobe-ototabi/Pages/VHirodenBus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVkhpcm9kZW5CdXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
