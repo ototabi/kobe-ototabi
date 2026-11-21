@@ -1,0 +1,89 @@
+@page
+@model ColummModel
+@{
+    ViewData["Title"] = "コラム";
+}
+<style>
+    .container, main, div.container {
+        max-width: 100% !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin: 0px !important;
+    }
+
+
+    .custom-container {
+        max-width: 1300px !important;
+        width: 92% !important;          /* 👈 画面の端っこにパツパツにならないようにします */
+        margin-left: auto !important;   /* 👈 左右を自動にすることで、完全に真ん中寄せになります */
+        margin-right: auto !important;  /* 👈 左右を自動にすることで、完全に真ん中寄せになります */
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        text-align: left !important;
+    }
+
+    .hover-lift {
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease !important;
+    }
+    .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .fade-in-right-delay {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-right-delay.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    nav.navbar {
+        position: absolute !important;
+        z-index: 99999 !important; 
+        width: 100%;
+    }
+</style>
+
+<div style="position: relative; width: 100%; height: 320px; overflow: hidden; border-radius: 0px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 0px; margin-bottom: 40px;">
+    <img src="https://i.imgur.com/1GwQsza.jpeg" alt="タブレット放送ヘッダー" style="width: 100%; height: 120%; object-fit: cover; display: block;" />
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);"></div>
+    <div style="position: absolute; top: 50%; left: 5%; transform: translateY(-50%); text-align: left; width: 90%;">
+        <h1 style="color: white; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; font-weight: bold; font-size: 2.2rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); margin: 0;">
+         No.001 JR西のタブレット放送を考える①
+        </h1>
+        <p style="color: #e0e0e0; font-size: 1rem; margin-top: 10px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); margin-bottom: 0;">
+         近鉄車両エンジニアリングが開発した、タブレット端末を用いた車内放送システム「TrainAnnounce」。ここでは、スポット放送などの追加放送について考えます。
+
+        </p>
+    </div>
+</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+
+@{
+    string story = @"今回は、JR西日本のタブレット放送のスポット放送について考えます。
+音鉄として、自分調べでいろんな放送を聞いてきました。同じ内容の放送が数種類あったり...
+なお、日英のみとさせていただきます。中国語・韓国語はわかりません...";
+}
+
+<div style="max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.8; white-space: pre-wrap; font-family: 'BIZ UDPGothic', 'Noto Sans JP', sans-serif !important; font-weight: 700;">@story</div>
+
+
+<!-- 1. 押すボタン（どこに置いてもOK） -->
+<div style="max-width: 800px; margin: 20px auto; padding: 0 20px;">
+    <a href="#section2" style="display: inline-block; padding: 10px 20px; background-color: #0072bc; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
+        ▼ 出口・扉・降車案内
+    </a>
+        <a href="#section2" style="display: inline-block; padding: 10px 20px; background-color: #0072bc; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
+        ▼ 出口・扉・降車案内
+    </a>
+
+</div>
+
+<!-- 2. 移動先の場所（id="section2" をつける） -->
+<div id="section2" style="max-width: 800px; margin: 40px auto; padding: 20px; background-color: #f4f8fb; border-left: 5px solid #0072bc;">
+    <h2 style="margin-top: 0; font-size: 1.4rem;">出口・扉・降車案内</h2>
